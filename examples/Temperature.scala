@@ -12,6 +12,10 @@ class Temperature {
     current = now
     scale = "c"
   }
+  def setKelvin(now:Double):Unit = {
+    current = now
+    scale = "k"
+  }
   def getFahrenheit():Double = {
     if(scale == "f")
       current
@@ -24,6 +28,12 @@ class Temperature {
     else
       (current - 32.0) * 5.0/9.0
   }
+  def getKelvin():Double = {
+    if(scale == "k")
+      current
+    else
+      (getCelsius() + 273.15)
+  }
 }
 
 val temp = new Temperature
@@ -32,3 +42,4 @@ temp.getFahrenheit() is 98.6
 temp.getCelsius is 37.0
 temp.setCelsius(100.0)
 temp.getFahrenheit is 212.0
+temp.getKelvin is 373.15
