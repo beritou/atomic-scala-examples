@@ -22,3 +22,20 @@ family1.familySize() is 4
 val family2 =
   new Family("Dad", "Mom", "Harry")
 family2.familySize() is 3
+
+class FlexibleFamily(mom:String, dad:String, kids:String*) {
+  def familySize(): Int = {
+    2 + kids.length
+  }
+}
+
+val family3 = new FlexibleFamily(
+  "Mom", "Dad", "Sally", "Dick")
+family3.familySize() is 4
+val family4 =
+  new FlexibleFamily("Dad", "Mom", "Harry")
+family4.familySize() is 3
+
+val familyNoKids =
+  new FlexibleFamily("Mom", "Dad")
+familyNoKids.familySize() is 2
