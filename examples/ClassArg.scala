@@ -39,3 +39,18 @@ family4.familySize() is 3
 val familyNoKids =
   new FlexibleFamily("Mom", "Dad")
 familyNoKids.familySize() is 2
+
+
+def squareThem(numbers:Int*): Int = {
+ var total:Int = 0
+  for (n <- numbers) {
+    total += n * n
+ }
+  total
+  /* could also be implemented like so
+  numbers.map(x => x * x).sum
+  */
+}
+squareThem(2) is 4
+squareThem(2, 4) is 20
+squareThem(1, 2, 4) is 21
