@@ -36,10 +36,10 @@ tree.name is "Oak"
 tree.zip is "48104"
 
 class ClothesWasher(model:String, capacity:Double) {
-  def this(model:String) = {
+  def this(model:String) {
     this(model, 100.0)
   }
-  def this(capacity:Double) = {
+  def this(capacity:Double) {
     this("Maytag", capacity)
   }
 }
