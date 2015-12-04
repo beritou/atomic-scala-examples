@@ -57,13 +57,12 @@ class Tea(decaf:Boolean = false,
           sugar:Boolean = false,
           milk:Boolean = false ) {
   def describe() = {
-    if(decaf)
-      name + " decaf"
-    else if (milk && sugar)
-      name + " + milk + sugar"
-    else if (sugar)
-      name + " + sugar"
-    else name
+    (decaf, sugar, milk) match {
+      case (true, _, _) => name + " decaf"
+      case (_, true, true) => name + " + milk + sugar"
+      case (_, true, _) => name + " + sugar"
+      case _ => name
+    }
   }
   def calories() = if(sugar && milk) 116 else if (sugar) 16 else 0
 }
