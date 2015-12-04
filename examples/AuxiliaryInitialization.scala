@@ -9,29 +9,21 @@ class House(val address:String,
     this("address?", "state?", zip)
 }
 
-class Home(address:String, state:String,
-  zip:String, val name:String)
-  extends House(address, state, zip) {
+class Home(address:String, state:String, zip:String, val name:String) extends House(address, state, zip) {
     override def toString =
       s"$name: $address, $state $zip"
 }
 
-class VacationHouse(
-  state:String, zip:String,
-  val startMonth:Int, val endMonth:Int)
-  extends House(state, zip)
+class VacationHouse(state:String, zip:String, val startMonth:Int, val endMonth:Int) extends House(state, zip)
 
-class TreeHouse(
-  val name:String, zip:String)
-  extends House(zip)
+class TreeHouse(val name:String, zip:String) extends House(zip)
 
 val h = new Home("888 N. Main St.", "KS",
   "66632", "Metropolis")
 h.address is "888 N. Main St."
 h.state is "KS"
 h.name is "Metropolis"
-h is
-"Metropolis: 888 N. Main St., KS 66632"
+h is "Metropolis: 888 N. Main St., KS 66632"
 
 val v =
   new VacationHouse("KS", "66632", 6, 8)
@@ -42,3 +34,12 @@ v.endMonth is 8
 val tree = new TreeHouse("Oak", "48104")
 tree.name is "Oak"
 tree.zip is "48104"
+
+class ClothesWasher(model:String, capacity:Double) {
+  def this(model:String) = {
+    this(model, 100.0)
+  }
+  def this(capacity:Double) = {
+    this("Maytag", capacity)
+  }
+}
