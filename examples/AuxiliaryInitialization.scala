@@ -50,3 +50,15 @@ val wayOne = new ClothesWasher("Maytag")
 val wayTwo = new ClothesWasher2()
 wayOne.capacity is wayTwo.capacity
 wayOne.model is wayTwo.model
+
+class ClothesWasher3(model:String, capacity:Double) {
+  def wash(numBleach:Int = 0, numFabric:Int = 0) =
+    (numBleach, numFabric) match {
+      case (0,0) => "Simple wash"
+      case _ =>  "Wash used " + numBleach + " bleach and " + numFabric + " fabric softener"
+    }
+}
+
+val washer = new ClothesWasher3("LG 100", 3.6)
+washer.wash(2, 1) is "Wash used 2 bleach and 1 fabric softener"
+washer.wash() is "Simple wash"
