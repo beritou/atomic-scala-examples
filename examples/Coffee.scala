@@ -57,10 +57,10 @@ class Tea(decaf:Boolean = false,
           sugar:Boolean = false,
           milk:Boolean = false ) {
   def describe() = {
-    (decaf, sugar, milk) match {
-      case (true, _, _) => name + " decaf"
-      case (_, true, true) => name + " + milk + sugar"
-      case (_, true, _) => name + " + sugar"
+    (decaf, sugar, milk, name) match {
+      case (true, _, _, n:String) => n + " decaf"
+      case (_, true, true, n:String) => n + " + milk + sugar"
+      case (_, true, _, n:String) => n + " + sugar"
       case _ => name
     }
   }
