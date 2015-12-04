@@ -35,7 +35,7 @@ val tree = new TreeHouse("Oak", "48104")
 tree.name is "Oak"
 tree.zip is "48104"
 
-class ClothesWasher(model:String, capacity:Double) {
+class ClothesWasher(val model:String, val capacity:Double) {
   def this(model:String) {
     this(model, 100.0)
   }
@@ -43,3 +43,10 @@ class ClothesWasher(model:String, capacity:Double) {
     this("Maytag", capacity)
   }
 }
+
+class ClothesWasher2(val model:String = "Maytag", val capacity:Double = 100.0)
+
+val wayOne = new ClothesWasher("Maytag")
+val wayTwo = new ClothesWasher2()
+wayOne.capacity is wayTwo.capacity
+wayOne.model is wayTwo.model
