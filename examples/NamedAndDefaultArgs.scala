@@ -67,3 +67,49 @@ val st3 = new SimpleTime(9, 30).
   subtract(new SimpleTime(10, 0))
 st3.hours is 0
 st3.minutes is 0
+
+class SimpleTimeDefault(val hours:Int, val minutes:Int = 0) {
+  def subtract(t3: SimpleTimeDefault):SimpleTimeDefault = {
+    val timeDiffMinutes = (hours * 60 + minutes) - (t3.hours * 60 + t3.minutes)
+    if (timeDiffMinutes < 0)
+      new SimpleTimeDefault(0,0)
+    else
+      new SimpleTimeDefault((timeDiffMinutes / 60), timeDiffMinutes % 60)
+  }
+}
+
+val anotherT1 =
+  new SimpleTimeDefault(10, 30)
+val anotherT2 = new SimpleTimeDefault(9)
+val anotherST =
+  anotherT1.subtract(anotherT2)
+anotherST.hours is 1
+anotherST.minutes is 30
+val anotherST2 = new SimpleTimeDefault(10).
+  subtract(new SimpleTimeDefault(9, 45))
+anotherST2.hours is 0
+anotherST2.minutes is 15
+
+class SimpleTimeAux(val hours:Int, val minutes:Int) {
+  def this (hours:Int) {
+    this(hours, 0)
+  }
+
+  def subtract(t3: SimpleTimeAux):SimpleTimeAux = {
+    val timeDiffMinutes = (hours * 60 + minutes) - (t3.hours * 60 + t3.minutes)
+    if (timeDiffMinutes < 0)
+      new SimpleTimeAux(0,0)
+    else
+      new SimpleTimeAux((timeDiffMinutes / 60), timeDiffMinutes % 60)
+  }
+}
+
+val auxT1 = new SimpleTimeAux(10, 5)
+val auxT2 = new SimpleTimeAux(6)
+val auxST = auxT1.subtract(auxT2)
+auxST.hours is 4
+auxST.minutes is 5
+val auxST2= new SimpleTimeAux(12).subtract(
+  new SimpleTimeAux(9, 45))
+auxST2.hours is 2
+auxST2.minutes is 15
