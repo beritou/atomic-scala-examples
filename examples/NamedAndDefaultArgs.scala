@@ -1,7 +1,15 @@
 // NamedAndDefaultArgs.scala
 import com.atomicscala.AtomicTest._
 
-class SimpleTime(val hours:Int, val minutes:Int)
+class SimpleTime(val hours:Int, val minutes:Int) {
+  def subtract(t3: SimpleTime):SimpleTime = {
+    val timeDiffMinutes = (hours * 60 + minutes) - (t3.hours * 60 + t3.minutes)
+    if (timeDiffMinutes < 0)
+      new SimpleTime(0,0)
+    else
+      new SimpleTime((timeDiffMinutes / 60), timeDiffMinutes % 60)
+  }
+}
 
 val t = new SimpleTime(hours=5, minutes=30)
 t.hours is 5
@@ -45,9 +53,17 @@ sunscreen.cost() is 3.3
 val tv = new Item(name="television", 500)
 tv.cost(taxRate = 0.06) is 530
 
-//class Color2(red:Int = 100,
-//  blue:Int = 100, green:Int = 100)
-//new Color2(20)
-//new Color2(20, 17)
-//new Color2(blue = 20)
-//new Color2(red = 11, green = 42)
+val t1 = new SimpleTime(10, 30)
+val t3 = new SimpleTime(9, 30)
+val st = t1.subtract(t3)
+
+st.hours is 1
+st.minutes is 0
+val st2 = new SimpleTime(10, 30).
+  subtract(new SimpleTime(9, 45))
+st2.hours is 0
+st2.minutes is 45
+val st3 = new SimpleTime(9, 30).
+  subtract(new SimpleTime(10, 0))
+st3.hours is 0
+st3.minutes is 0
