@@ -21,3 +21,14 @@ forecast(15) is "Unknown"
 val sunnyData = Vector(100, 80, 50, 20, 0, 15)
 for (d <- sunnyData)
   println (d + " is " + forecast(d))
+
+val weather = Vector(100, 80, 20, 100, 20)
+
+def historicalData(weather: Vector[Int]) = {
+  val sunnyDays = weather.count(w => w == 100)
+  val mostSunnyDays = weather.count(w => w == 80)
+  val mostlyCloudyDays = weather.count(w => w == 20)
+  s"Sunny=$sunnyDays, Mostly Sunny=$mostSunnyDays, Mostly Cloudy=$mostlyCloudyDays"
+}
+
+historicalData(weather) is "Sunny=2, Mostly Sunny=1, Mostly Cloudy=2"
