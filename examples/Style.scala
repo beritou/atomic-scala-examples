@@ -1,13 +1,11 @@
 // Style.scala
 import com.atomicscala.AtomicTest._
 
-class Exclaim(var s: String) {
+class Exclaim3(var s: String) {
   def noParens = s + "!"
-  def parens() = s + "!"
 }
-val e = new Exclaim("yes")
+val e = new Exclaim3("yes")
 e.noParens is "yes!"
-e.parens() is "yes!"
 
 class Exclaim2(var s: String) {
   val noParens = s + "!"
