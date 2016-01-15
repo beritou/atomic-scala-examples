@@ -1,12 +1,10 @@
 // If4.scala
 
-val z:Boolean = false
+val z = false
 
-if(z) {
-  println("It's true!")
-} else {
-  println("It's false")
-}
+if(z) println("It's true!")
+else println("It's false")
+
 
 /* Output:
 It's false
